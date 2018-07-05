@@ -3,6 +3,7 @@ package com.likainan.cmfz.entity;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 菜单实体类
@@ -15,19 +16,21 @@ public class Menu implements Serializable {
     private  String  menuName;
     private String  menuIcon;
     private  String menuUrl;
+    private  String menuCode;
     private  int menuLevel;
-    private String menuParentId;
+    private List<Menu> menuList;
 
-    public Menu(String menuId, String menuName, String menuIcon, String menuUrl, int menuLevel, String menuParentId) {
+    public Menu() {
+    }
+
+    public Menu(String menuId, String menuName, String menuIcon, String menuUrl, String menuCode, int menuLevel, List<Menu> menuList) {
         this.menuId = menuId;
         this.menuName = menuName;
         this.menuIcon = menuIcon;
         this.menuUrl = menuUrl;
+        this.menuCode = menuCode;
         this.menuLevel = menuLevel;
-        this.menuParentId = menuParentId;
-    }
-
-    public Menu() {
+        this.menuList = menuList;
     }
 
     public String getMenuId() {
@@ -46,11 +49,11 @@ public class Menu implements Serializable {
         this.menuName = menuName;
     }
 
-    public String getmenuIcon() {
+    public String getMenuIcon() {
         return menuIcon;
     }
 
-    public void setmenuIcon(String menuIcon) {
+    public void setMenuIcon(String menuIcon) {
         this.menuIcon = menuIcon;
     }
 
@@ -62,6 +65,14 @@ public class Menu implements Serializable {
         this.menuUrl = menuUrl;
     }
 
+    public String getMenuCode() {
+        return menuCode;
+    }
+
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode;
+    }
+
     public int getMenuLevel() {
         return menuLevel;
     }
@@ -70,12 +81,12 @@ public class Menu implements Serializable {
         this.menuLevel = menuLevel;
     }
 
-    public String getMenuParentId() {
-        return menuParentId;
+    public List<Menu> getMenuList() {
+        return menuList;
     }
 
-    public void setMenuParentId(String menuParentId) {
-        this.menuParentId = menuParentId;
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
     }
 
     @Override
@@ -85,8 +96,9 @@ public class Menu implements Serializable {
                 ", menuName='" + menuName + '\'' +
                 ", menuIcon='" + menuIcon + '\'' +
                 ", menuUrl='" + menuUrl + '\'' +
+                ", menuCode='" + menuCode + '\'' +
                 ", menuLevel=" + menuLevel +
-                ", menuParentId='" + menuParentId + '\'' +
+                ", menuList=" + menuList +
                 '}';
     }
 }
