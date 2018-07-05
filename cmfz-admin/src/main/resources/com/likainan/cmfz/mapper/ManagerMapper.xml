@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.likainan.cmfz.dao.ManagerDao">
+    <resultMap id="ManagerResultMap" type="Manager">
+        <result property="mgrId" column="MGR_ID"/>
+        <result property="mgrName" column="MGR_NAME"/>
+        <result property="mgrPassword" column="MGR_PASSWORD"/>
+        <result property="salt" column="SALT"/>
+        <result property="status" column="STATUS"/>
+    </resultMap>
+    <select id="findManager" resultMap="ManagerResultMap">
+        SELECT * FROM t_manager WHERE MGR_NAME=#{MGR_NAME}
+    </select>
+</mapper>
