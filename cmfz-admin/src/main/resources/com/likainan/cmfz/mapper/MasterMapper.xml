@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.likainan.cmfz.dao.MasterDao">
+    <resultMap id="MasterResultMap" type="Master">
+        <result property="masterId" column="MASTER_ID"/>
+        <result property="masterName" column="MASTER_NAME"/>
+        <result property="masterPic" column="MASTER_PIC"/>
+        <result property="masterSummary" column="MASTER_SUMMARY"/>
+    </resultMap>
+    <select id="findAllMaster" resultMap="MasterResultMap">
+        SELECT * FROM T_MASTER limit #{offset},#{rows}
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(*) FROM T_MASTER
+    </select>
+</mapper>

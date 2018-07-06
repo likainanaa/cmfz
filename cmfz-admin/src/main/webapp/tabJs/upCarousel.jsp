@@ -7,25 +7,33 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
-    $("#fm").form({
+    $(function(){
+      /*  $('#btn').bind('click', function(){
+            $("#fm").form("submit",{
+                url:"${pageContext.request.contextPath}/carousel/upPic",
+                onSubmit: function(){
+                },
+                success:function(data){
+                    alert(data)
+                }
 
-        onSubmit: function(){
+            })
+        });*/
+    });
 
-    },
-    success:function(data){
-        alert(data)
-    }
 
-    })
+
+
 
 </script>
-<form id="fm">
+<form id="fm" enctype="multipart/form-data" method="post">
     <div>
-        <label for="name">Name:</label>
-        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />
+        <label>内容描述：</label>
+        <input class="easyui-validatebox" type="text" name="description">
     </div>
     <div>
-        <label for="email">Email:</label>
-        <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />
+        <label >选择图片:</label>
+        <input class="easyui-validatebox" type="file" name="myPic" >
     </div>
+
 </form>

@@ -9,6 +9,12 @@
         <result property="picStatus" column="PIC_STATUS"/>
     </resultMap>
     <select id="findAllPic" resultMap="CarouselResultMap">
-        SELECT * FROM t_carousel
+        SELECT * FROM t_carousel limit #{offset},#{rows}
     </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(*) FROM t_carousel
+    </select>
+    <insert id="insertPic">
+        INSERT INTO t_carousel VALUES(#{carousel.picId},#{carousel.picPath},#{carousel.picDate}, #{carousel.picDescription},#{carousel.picStatus})
+    </insert>
 </mapper>

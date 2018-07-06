@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ASUS on 2018/7/5.
@@ -20,10 +22,14 @@ public class CarouselServiceImpl  implements CarouselService{
     private CarouselDao carouselDao;
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<Carousel> queryAllPic() {
-        List<Carousel> list=carouselDao.findAllPic();
+    public Map<String,Object> queryAllPic(int offset,int rows) {
+        List<Carousel> list=carouselDao.findAllPic(offset,rows);
+        int counts=carouselDao.count();
         if(list!=null){
-            return  list;
+            Map<String,Object> map=new HashMap<String,Object>();
+            map.put("total",counts);
+            map.put("rows",list);
+            return  map;
         }
         return null;
     }
@@ -36,5 +42,12 @@ public class CarouselServiceImpl  implements CarouselService{
            return n;
        }
         return 0;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public int addPic(Carousel carousel) {
+        int n=carouselDao.insertPic(carousel);
+        return n;
     }
 }
