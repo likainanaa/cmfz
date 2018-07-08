@@ -13,16 +13,17 @@
     <script type="text/javascript" src="js/datagrid-detailview.js"></script>
     <script type="text/javascript">
 
-    function tabb(menuName) {
+    function tabb(menuUrl,menuName) {
         var v=$("#tt").tabs("exists",menuName);
         if(v){
             $("#tt").tabs("select",menuName)
         }
         else{
+            console.log(menuName)
             $("#tt").tabs("add",{
                 title:menuName,
                 closable:true,
-                href:"${pageContext.request.contextPath}/tabJs/carouselTable.jsp"
+                href:"${pageContext.request.contextPath}/tabJs/"+menuUrl,
             })
         }
     }
@@ -36,8 +37,10 @@
                 $.each(e,function (index,obj) {
                         var contents="";
                         $.each(obj.menuList,function (index1,obj1) {
-                            contents+="<p style=\"  margin-top: 0px; text-align: center \"><a  class=\"easyui-linkbutton\" onclick=\"tabb('"+obj1.menuName+"')\" data-aptions=\" iconCls:"+obj1.menuName+",pain:true\">"+obj1.menuName+"</a></p>"
+//                            contents+="<p style=' margin-top: 0px; text-align: center '><a  class='easyui-linkbutton' onclick='tabb('"+obj1.menuName+"','"+obj1.menuUrl+"')' data-aptions=' iconCls:"+obj1.menuIcon+",pain:true'>"+obj1.menuName+"</a></p>"
+                            contents+="<p style=\" margin-top: 0px; text-align: center \"><a  class=\"easyui-linkbutton\" onclick=\"tabb('"+obj1.menuUrl+"','"+obj1.menuName+"')\" data-aptions=\" iconCls:"+obj1.menuIcon+",pain:true\">"+obj1.menuName+"</a></p>"
                         })
+
                         $("#aa").accordion("add",{
                             title:obj.menuName,
                             iconCls:obj.menuIcon,

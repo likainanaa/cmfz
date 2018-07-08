@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-
     <script type="text/javascript">
 
             $('#table').datagrid({
@@ -32,7 +31,6 @@
                                             },
                                             success:function(data){
                                                 if(data==1){
-
                                                     alert("添加成功！data"+data)
                                                     $('#table').datagrid('reload');
                                                 }

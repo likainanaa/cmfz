@@ -9,7 +9,8 @@ import java.util.List;
  * Created by ASUS on 2018/7/6.
  */
 public interface MasterDao {
-    List<Master> findAllMaster(@Param("offset") int page,@Param("rows") int rows);
+    List<Master> findAllMaster(@Param("offset") int page,@Param("rows") int rows,@Param("masterName") String name);
     int count();
+    int insertMasters(List<Master>list);
 
 }

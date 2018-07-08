@@ -8,9 +8,23 @@
         <result property="masterSummary" column="MASTER_SUMMARY"/>
     </resultMap>
     <select id="findAllMaster" resultMap="MasterResultMap">
-        SELECT * FROM T_MASTER limit #{offset},#{rows}
+        SELECT * FROM T_MASTER
+        <where>
+            <if test="masterName!=null and masterName!=''">
+               and  MASTER_NAME LIKE '%${masterName}%'
+            </if>
+        </where>
+       limit #{offset},#{rows}
     </select>
     <select id="count" resultType="java.lang.Integer">
         SELECT count(*) FROM T_MASTER
     </select>
+    <insert id="insertMasters">
+        insert into t_Master values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.masterId},#{item.masterName},#{item.masterPic},#{item.masterSummary})
+        </foreach>
+
+    </insert>
+
 </mapper>

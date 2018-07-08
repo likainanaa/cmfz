@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.likainan.cmfz.dao.ArticleDao">
+    <resultMap id="ArticleResultMap" type="Article">
+        <result property="articleId" column="ARTICLE_ID"/>
+        <result property="articleName" column="ARTICLE_NAME"/>
+        <result property="guruId" column="GURU_ID"/>
+        <result property="introduction" column="INTRODUCTION"/>
+        <result property="articlePic" column="ARTICLE_PIC"/>
+        <result property="publishDate" column="PUBLISH_DATE"/>
+    </resultMap>
+    <insert id="insertArticle">
+        INSERT INTO t_article VALUES(#{article.articleId},#{article.articleName},#{article.guruId}, #{article.introduction},#{article.articlePic},#{article.publishDate})
+    </insert>
+</mapper>

@@ -33,7 +33,7 @@
     </div>
     <div>
         <label >选择图片:</label>
-        <input class="easyui-validatebox" type="file" name="myPic" >
+        <input class="easyui-filebox" name="myPic" >
     </div>
 
 </form>
