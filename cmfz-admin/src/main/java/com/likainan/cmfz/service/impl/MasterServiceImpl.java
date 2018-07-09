@@ -23,14 +23,19 @@ public class MasterServiceImpl implements MasterService{
     private MasterDao masterDao;
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public Map<String, Object> queryAllMaster(int page, int rows,String name) {
+    public Object queryAllMaster(int page, int rows,String name) {
         List<Master> list=masterDao.findAllMaster(page,rows,name);
         int count =masterDao.count();
         Map<String,Object> map=new HashMap<String,Object>();
         if(list!=null){
-            map.put("total",count);
-            map.put("rows",list);
-            return map;
+            if(rows<0){
+                return list;
+            }
+            else{
+                map.put("total",count);
+                map.put("rows",list);
+                return map;
+            }
         }
         return null;
     }

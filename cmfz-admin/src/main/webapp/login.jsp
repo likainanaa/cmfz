@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" isELIgnored="false"
+		 pageEncoding="utf-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -30,7 +32,7 @@
 				return false;
 			});*/
 		});
-	</script>
+	</script>0
 </head>
 <body>
 	

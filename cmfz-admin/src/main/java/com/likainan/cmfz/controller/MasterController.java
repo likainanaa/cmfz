@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
 import java.util.Map;
 
@@ -24,11 +23,11 @@ public class MasterController {
     private MasterService masterService;
     @RequestMapping("/showMaster")
     @ResponseBody
-    public Map<String,Object> showMaster(int page,int rows,String name){
-        return  masterService.queryAllMaster((page-1)*rows,rows,name);
+    public Object showMaster(int page,int rows,String name){
+            return  masterService.queryAllMaster((page-1)*rows,rows,name);
+
     }
-    @RequestMapping("/addMasters")
-    @ResponseBody
+    @RequestMapping("/addMasters")    @ResponseBody
     public int addMasters(@RequestParam(value = "file",required = false) MultipartFile file){
         System.out.println("文件名："+file.getName());
         List<Master> list=ExcelUtil.importExcel(file,1,1,Master.class);

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by ASUS on 2018/7/8.
  */
@@ -21,7 +23,9 @@ public class ArticleServiceImpl implements ArticleService{
     @Transactional(propagation = Propagation.REQUIRED)
     public int addArticle(Article article) {
         article.setArticleId(GetUUID.getUUID());
+        article.setPublishDate(new Date());
         int n=articleDao.insertArticle(article);
+        System.out.println(n);
         if(n!=0){
             return n;
         }

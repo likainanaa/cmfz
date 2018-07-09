@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @SessionAttributes(value = {"manager"})
+
 public class ManagerController {
     @Autowired
     private ManagerService ms;
@@ -27,10 +28,10 @@ public class ManagerController {
         if(code.equalsIgnoreCase(codee)){
             System.out.println(manager);
             if(manager!=null){
-                return "/index";
+                return "main";
             }
         }
-        return "/manangerLogin";
+        return "managerLogin";
     }
 
 }

@@ -12,6 +12,6 @@ import java.util.Map;
  */
 
 public interface MasterService {
-    Map<String,Object> queryAllMaster(int page,int rows,String name);
+    Object queryAllMaster(int page,int rows,String name);
     int addMasters(List<Master>list);
 }

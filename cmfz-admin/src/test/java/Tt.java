@@ -76,7 +76,7 @@ public class Tt {
         ApplicationContext atx=new ClassPathXmlApplicationContext("/applicationContext.xml");
         ArticleDao ad= (ArticleDao) atx.getBean("articleDao");
         ArticleService as= (ArticleService) atx.getBean("articleServiceImpl");
-            Article article= new Article("a","第一篇","`   ","aaaaa","11",new Date());
+            Article article= new Article("233","第一篇","   ","aaaaa","11",new Date());
 //        System.out.println(ad.insertArticle(article));
         System.out.println(as.addArticle(article));
     }

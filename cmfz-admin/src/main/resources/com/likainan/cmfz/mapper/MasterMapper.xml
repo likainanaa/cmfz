@@ -9,12 +9,14 @@
     </resultMap>
     <select id="findAllMaster" resultMap="MasterResultMap">
         SELECT * FROM T_MASTER
+        <if test="offset!=-1 and rows!=-1">
         <where>
             <if test="masterName!=null and masterName!=''">
                and  MASTER_NAME LIKE '%${masterName}%'
             </if>
         </where>
        limit #{offset},#{rows}
+        </if>
     </select>
     <select id="count" resultType="java.lang.Integer">
         SELECT count(*) FROM T_MASTER
